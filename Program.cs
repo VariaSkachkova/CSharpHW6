@@ -3,6 +3,10 @@
 Console.WriteLine("Задача 41: Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.");
 Console.WriteLine("Сколько чисел вы хотите ввести?");
 int input = Convert.ToInt32 (Console.ReadLine ());
+Console.WriteLine($"Количество введенных положительных чисел: {CountPositiveNumbers (input)}");
+}
+int CountPositiveNumbers (int input)
+{
 int count = 0;
 for (int i = 0; i < input; i++)
     {
@@ -10,9 +14,9 @@ for (int i = 0; i < input; i++)
         int num = Convert.ToInt32 (Console.ReadLine ());
         if (num > 0) { count++; }
     }
-Console.WriteLine($"Количество введенных положительных чисел: {count}");
+return count;
 }
-//Task41();
+Task41();
 
 void Task43() 
 {
@@ -24,9 +28,20 @@ double k1 = Convert.ToDouble (Console.ReadLine ());
 Console.WriteLine("Введите значение b2");
 double b2 = Convert.ToDouble (Console.ReadLine ());
 Console.WriteLine("Введите значение k2");
-double k2 = Convert.ToInt32 (Console.ReadLine ());
-double x = (b2 - b1)/(k1 - k2);
-double y = k1*x + b1;
+double k2 = Convert.ToInt32(Console.ReadLine());
+double x = FindIntersectionForX (b1, k1, b2, k2);
+double y = FindIntersectionForY (b1, k1, x);
 Console.WriteLine($"Координаты пересечения двух прямых: ({x}, {y})");
 }
 Task43();
+double FindIntersectionForX (double b1, double k1, double b2, double k2)
+{
+    double x = (b2 - b1) / (k1 - k2);
+    return x;
+}
+double FindIntersectionForY (double b1, double k1, double x)
+{
+    double y = k1 * x + b1;
+    return y;
+}
+
